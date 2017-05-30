@@ -1,0 +1,75 @@
+[
+  {
+    "tag": "physical",
+    "url": "bjstdmngbgr02.thoughtworks.com",
+    "status": "idle",
+    "ip": "192.168.1.2",
+    "path": "/var/lib/cruise-agent",
+    "res": [
+      "ubuntu",
+      "firefox3",
+      "core-duo"
+    ]
+  },
+  {
+    "tag": "physical",
+    "url": "bjstdmngbgr03.thoughtworks.com",
+    "status": "building",
+    "ip": "192.168.1.3",
+    "path": "/var/lib/cruise-agent",
+    "res": [
+      "ubuntu",
+      "firefox3",
+      "mysql",
+      "core-duo"
+    ]
+  },
+  {
+    "tag": "physical",
+    "url": "bjstdmngbgr04.thoughtworks.com",
+    "status": "building",
+    "ip": "192.168.1.4",
+    "path": "/var/lib/cruise-agent",
+    "res": [
+      "ubuntu",
+      "firefox3",
+      "mysql",
+      "core-duo"
+    ]
+  },
+  {
+    "tag": "physical",
+    "url": "bjstdmngbgr05.thoughtworks.com",
+    "status": "idle",
+    "ip": "192.168.1.5",
+    "path": "/var/lib/cruise-agent",
+    "res": [
+      "ubuntu"
+    ]
+  },
+  {
+    "tag": "virtual",
+    "url": "bjstdmngbgr06.thoughtworks.com",
+    "status": "idle",
+    "ip": "192.168.1.6",
+    "path": "/var/lib/cruise-agent",
+    "res": [
+      "ubuntu",
+      "mysql",
+      "core-duo"
+    ]
+  },
+  {
+    "tag": "virtual",
+    "url": "bjstdmngbgr07.thoughtworks.com",
+    "status": "building",
+    "ip": "192.168.1.7",
+    "path": "/var/lib/cruise-agent",
+    "res": [
+      "ubuntu",
+      "mysql",
+      "mysql",
+      "core-duo"
+    ]
+  }
+]
