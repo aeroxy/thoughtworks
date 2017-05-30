@@ -128,7 +128,7 @@ function populateagents(data) {
 }
 document.addEventListener('click', function(e){
   if (e.target.localName == 'tag' && e.target.className.indexOf('selected') == -1){
-    mixpanel.track("Sub-menu Selected" + e.target.childNodes[0].data);
+    mixpanel.track("Sub-menu Selected " + e.target.childNodes[0].data);
     Array.prototype.slice.call(document.getElementsByTagName('tag')).forEach(function(item,index){
       item.removeAttribute('class');
     });
@@ -137,7 +137,7 @@ document.addEventListener('click', function(e){
     console.log(e.target.childNodes[0].data.charAt(0).toLowerCase() + e.target.childNodes[0].data.slice(1));
     document.getElementById('left').classList.add(e.target.childNodes[0].data.charAt(0).toLowerCase() + e.target.childNodes[0].data.slice(1));
   }else if (e.target.localName == 'res'){
-    mixpanel.track("Res Removed" + e.target.childNodes[0].data);
+    mixpanel.track("Res Removed " + e.target.childNodes[0].data);
     e.target.remove();
   }else if (e.target.localName == 'add'){
     mixpanel.track("Adding res...");
@@ -177,7 +177,7 @@ document.addEventListener('keyup',function(e){
     document.querySelector('taginput').parentNode.querySelector('resources').innerHTML = document.querySelector('taginput').parentNode.querySelector('resources').innerHTML + document.querySelector('taginput dynamictags').innerHTML;
     document.querySelector('taginput').classList.add('none');
   } else {
-    mixpanel.track("Other Key Pressed" + e.KeyCode);
+    mixpanel.track("Other Key Pressed " + e.KeyCode);
   }
 }, false);
 (function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,
