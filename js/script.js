@@ -82,7 +82,10 @@ docReady(function(){
       currentTags.push(data.innerText);
     });
     tempTags.forEach(function(data){
-      if (currentTags.indexOf(data) === -1) out += '<res>' + data + '</res>';
+      if (currentTags.indexOf(data) === -1) {
+        out += '<res>' + data + '</res>';
+        mixpanel.track('New Tag Added: ' + data);
+      }
     });
     document.getElementsByTagName('dynamictags')[0].innerHTML = document.getElementsByTagName('dynamictags')[0].innerHTML + out;
     setTimeout(function(){
@@ -105,7 +108,10 @@ docReady(function(){
           currentTags.push(data.innerText);
         });
         tempTags.forEach(function(data){
-          if (currentTags.indexOf(data) === -1) out += '<res>' + data + '</res>';
+          if (currentTags.indexOf(data) === -1) {
+            out += '<res>' + data + '</res>';
+            mixpanel.track('New Tag Added: ' + data);
+          }
         });
         document.getElementsByTagName('dynamictags')[0].innerHTML = document.getElementsByTagName('dynamictags')[0].innerHTML + out;
         setTimeout(function(){
@@ -206,13 +212,14 @@ document.addEventListener('keyup',function(e){
       currentTags.push(data.innerText);
     });
     tempTags.forEach(function(data){
-      if (currentTags.indexOf(data) === -1) out += '<res>' + data + '</res>';
+      if (currentTags.indexOf(data) === -1) {
+        out += '<res>' + data + '</res>';
+        mixpanel.track('New Tag Added: ' + data);
+      }
     });
     document.getElementsByTagName('dynamictags')[0].innerHTML = document.getElementsByTagName('dynamictags')[0].innerHTML + out;
     document.querySelector('taginput').parentNode.querySelector('resources').innerHTML = document.querySelector('taginput').parentNode.querySelector('resources').innerHTML + document.querySelector('taginput dynamictags').innerHTML;
     document.querySelector('taginput').classList.add('none');
-  } else {
-    mixpanel.track("Other Key Pressed " + String(e.keyCode));
   }
 }, false);
 (function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,
