@@ -30,6 +30,10 @@ header auth{
 header auth a{
   text-decoration: underline;
   cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 header auth a:link, header auth a:visited{
   color: black;
@@ -52,6 +56,10 @@ header auth button{
   margin-left: 10px;
   border-radius: 5px;
   box-shadow: 1px 1px 3px rgba(0,0,0,.3);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 header auth button:hover{
   background-color: #C62828;
@@ -78,6 +86,10 @@ nav tab{
   background-color: #BDBDBD;
   padding: 6px 10px;
   border-radius: 5px 5px 0 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 nav tab:hover{
   background-color: #E0E0E0;

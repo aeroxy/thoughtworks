@@ -172,7 +172,7 @@ document.addEventListener('click', function(e){
     mixpanel.track("Input Box Clicked");
     e.target.childNodes[3].focus();
   }else {
-    mixpanel.track("Other Click Action: " + e.target);
+    mixpanel.track("Other Click Action: " + e.target.localName + '.' + e.target.className);
   }
 });
 document.addEventListener('keyup',function(e){
