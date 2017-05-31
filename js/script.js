@@ -78,6 +78,9 @@ docReady(function(){
     Array.prototype.slice.call(document.getElementsByTagName('dynamictags')[0].children).forEach(function(data){
       currentTags.push(data.innerText);
     });
+    Array.prototype.slice.call(document.querySelector('taginput').parentNode.querySelector('resources').children).forEach(function(data){
+      currentTags.push(data.innerText);
+    });
     tempTags.forEach(function(data){
       if (currentTags.indexOf(data) === -1) out += '<res>' + data + '</res>';
     });
@@ -96,6 +99,9 @@ docReady(function(){
           if(tempTags.indexOf(tempData[i].trim()) === -1) tempTags.push(tempData[i].trim());
         }
         Array.prototype.slice.call(document.getElementsByTagName('dynamictags')[0].children).forEach(function(data){
+          currentTags.push(data.innerText);
+        });
+        Array.prototype.slice.call(document.querySelector('taginput').parentNode.querySelector('resources').children).forEach(function(data){
           currentTags.push(data.innerText);
         });
         tempTags.forEach(function(data){
@@ -181,22 +187,29 @@ document.addEventListener('keyup',function(e){
     mixpanel.track("Comma Pressed");
   } else if (e.keyCode == 13) {
     mixpanel.track("Enter Key Pressed");
-    var inputdata = document.getElementById('taginput').value;
-    if (inputdata.trim() !== ''){
-      var tempData, tempTags = [], currentTags = [], out = ''
-      tempData = inputData.split(',');
+    var inputData, tempData, tempTags = [], currentTags = [], out = '';
+    inputData = document.getElementById('taginput').value;
+    tempData = inputData.split(',');
+    if (inputData.trim() !== ''){
       for (var i = 0; i < tempData.length; i++) {
         if(tempTags.indexOf(tempData[i].trim()) === -1) tempTags.push(tempData[i].trim());
       }
-      Array.prototype.slice.call(document.getElementsByTagName('dynamictags')[0].children).forEach(function(data){
-        currentTags.push(data.innerText);
-      });
-      tempTags.forEach(function(data){
-        if (currentTags.indexOf(data) === -1) out += '<res>' + data + '</res>';
-      });
-      document.getElementsByTagName('dynamictags')[0].innerHTML = document.getElementsByTagName('dynamictags')[0].innerHTML + out;
-      document.querySelector('taginput').parentNode.querySelector('resources').innerHTML = document.querySelector('taginput').parentNode.querySelector('resources').innerHTML + document.querySelector('taginput dynamictags').innerHTML;
+    } else {
+      for (var i = 0; i < tempData.length - 1; i++) {
+        if(tempTags.indexOf(tempData[i].trim()) === -1) tempTags.push(tempData[i].trim());
+      }
     }
+    Array.prototype.slice.call(document.getElementsByTagName('dynamictags')[0].children).forEach(function(data){
+      currentTags.push(data.innerText);
+    });
+    Array.prototype.slice.call(document.querySelector('taginput').parentNode.querySelector('resources').children).forEach(function(data){
+      currentTags.push(data.innerText);
+    });
+    tempTags.forEach(function(data){
+      if (currentTags.indexOf(data) === -1) out += '<res>' + data + '</res>';
+    });
+    document.getElementsByTagName('dynamictags')[0].innerHTML = document.getElementsByTagName('dynamictags')[0].innerHTML + out;
+    document.querySelector('taginput').parentNode.querySelector('resources').innerHTML = document.querySelector('taginput').parentNode.querySelector('resources').innerHTML + document.querySelector('taginput dynamictags').innerHTML;
     document.querySelector('taginput').classList.add('none');
   } else {
     mixpanel.track("Other Key Pressed " + String(e.keyCode));
