@@ -110,6 +110,10 @@ tags tag{
   padding: 10px 20px;
   color: black;
   border-radius: 5px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 tags tag:hover{
   background-color: #EEEEEE;

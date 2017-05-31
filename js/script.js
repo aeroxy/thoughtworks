@@ -85,6 +85,28 @@ docReady(function(){
       document.getElementById('taginput').value = tempData[tempData.length - 1].trim();
     },0);
   }, false);
+  setInterval(function(){
+    if (!document.getElementsByTagName('taginput')[0].classList.contains('none')) {
+      var inputData = document.getElementById('taginput').value;
+      if (inputData.indexOf(',') !== -1){
+        var tempData, tempTags = [], currentTags = [], out = '';
+        tempData = inputData.split(',');
+        for (var i = 0; i < tempData.length - 1; i++) {
+          if(tempTags.indexOf(tempData[i].trim()) === -1) tempTags.push(tempData[i].trim());
+        }
+        Array.prototype.slice.call(document.getElementsByTagName('dynamictags')[0].children).forEach(function(data){
+          currentTags.push(data.innerText);
+        });
+        tempTags.forEach(function(data){
+          if (currentTags.indexOf(data) === -1) out += '<res>' + data + '</res>';
+        });
+        document.getElementsByTagName('dynamictags')[0].innerHTML = document.getElementsByTagName('dynamictags')[0].innerHTML + out;
+        setTimeout(function(){
+          document.getElementById('taginput').value = tempData[tempData.length - 1].trim();
+        },0);
+      }
+    }
+  },250);
 });
 var xhrhistory = new XMLHttpRequest();
 xhrhistory.addEventListener('load',function(){
@@ -156,22 +178,6 @@ document.addEventListener('click', function(e){
 document.addEventListener('keyup',function(e){
   if (e.keyCode == 188) {
     mixpanel.track("Comma Pressed");
-    var inputdata, tempData, tempTags = [], currentTags = [], out = '';
-    inputData = document.getElementById('taginput').value;
-    tempData = inputData.split(',');
-    for (var i = 0; i < tempData.length - 1; i++) {
-      if(tempTags.indexOf(tempData[i].trim()) === -1) tempTags.push(tempData[i].trim());
-    }
-    Array.prototype.slice.call(document.getElementsByTagName('dynamictags')[0].children).forEach(function(data){
-      currentTags.push(data.innerText);
-    });
-    tempTags.forEach(function(data){
-      if (currentTags.indexOf(data) === -1) out += '<res>' + data + '</res>';
-    });
-    document.getElementsByTagName('dynamictags')[0].innerHTML = document.getElementsByTagName('dynamictags')[0].innerHTML + out;
-    setTimeout(function(){
-      document.getElementById('taginput').value = tempData[tempData.length - 1].trim();
-    },0);
   } else if (e.keyCode == 13) {
     mixpanel.track("Enter Key Pressed");
     var inputdata, tempData, tempTags = [], currentTags = [], out = '';
