@@ -47,8 +47,9 @@ var agentsdata = false;
 })('docReady', window);
 docReady(function(){
   mixpanel.register({
-    "time": newtime
+    "newvisit": newtime
   });
+  mixpanel.track('newvisit: ' + newtime);
   document.getElementById('app').removeAttribute('class');
   function dataloading(){
     if (historydata && agentsdata) {
