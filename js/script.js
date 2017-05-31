@@ -177,7 +177,7 @@ document.addEventListener('keyup',function(e){
     var inputdata, tempData, tempTags = [], currentTags = [], out = '';
     inputData = document.getElementById('taginput').value;
     tempData = inputData.split(',');
-    for (var i = 0; i < tempData.length - 1; i++) {
+    for (var i = 0; i < tempData.length; i++) {
       if(tempTags.indexOf(tempData[i].trim()) === -1) tempTags.push(tempData[i].trim());
     }
     Array.prototype.slice.call(document.getElementsByTagName('dynamictags')[0].children).forEach(function(data){
@@ -187,9 +187,6 @@ document.addEventListener('keyup',function(e){
       if (currentTags.indexOf(data) === -1) out += '<res>' + data + '</res>';
     });
     document.getElementsByTagName('dynamictags')[0].innerHTML = document.getElementsByTagName('dynamictags')[0].innerHTML + out;
-    setTimeout(function(){
-      document.getElementById('taginput').value = tempData[tempData.length - 1].trim();
-    },0);
     document.querySelector('taginput').parentNode.querySelector('resources').innerHTML = document.querySelector('taginput').parentNode.querySelector('resources').innerHTML + document.querySelector('taginput dynamictags').innerHTML;
     document.querySelector('taginput').classList.add('none');
   } else {
